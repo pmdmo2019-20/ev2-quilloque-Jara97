@@ -15,7 +15,7 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
-            android:id="@+id/imgAvatar"
+            android:id="@+id/imgAvatar2"
             android:layout_width="@dimen/contact_item_imgAvatar_size"
             android:layout_height="@dimen/contact_item_imgAvatar_size"
             android:layout_marginEnd="@dimen/main_margin_2x"
@@ -34,12 +34,12 @@
             android:ellipsize="end"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgAvatar"
+            app:layout_constraintStart_toEndOf="@+id/imgAvatar2"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/full_names" />
 
         <TextView
-            android:id="@+id/lblPhoneNumber"
+            android:id="@+id/lblPhoneNumber2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/main_margin_half"
@@ -59,7 +59,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="@+id/lblName"
-            app:layout_constraintTop_toBottomOf="@+id/lblPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/lblPhoneNumber2"
             app:srcCompat="@drawable/ic_call_black_24dp"
             app:tint="?attr/colorAccent" />
 
@@ -84,7 +84,7 @@
             android:layout_marginStart="@dimen/main_margin_4x"
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/recent_item_btnVideoCall"
-            app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelete2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/btnMessage"
             app:layout_constraintTop_toTopOf="@+id/btnCall"
@@ -92,7 +92,7 @@
             app:tint="?attr/colorAccent" />
 
         <ImageButton
-            android:id="@+id/btnDelete"
+            android:id="@+id/btnDelete2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_margin_4x"

@@ -35,7 +35,7 @@
         tools:listitem="@layout/contacts_fragment_item" />
 
     <TextView
-        android:id="@+id/emptyView"
+        android:id="@+id/emptyView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

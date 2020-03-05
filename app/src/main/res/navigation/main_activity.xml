@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_activity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/dialNavigation"
+    android:id="@+id/main_activity">
+
+    <fragment
+        android:id="@+id/dialNavigation"
+        android:name="es.iessaladillo.pedrojoya.quilloque.fragments.DialFragment"
+        android:label="@string/dial_title"
+        tools:layout="@layout/dial_fragment" />
+    <fragment
+        android:id="@+id/recentNavigation"
+        android:name="es.iessaladillo.pedrojoya.quilloque.fragments.RecentFragment"
+        android:label="@string/recent_title"
+        tools:layout="@layout/recent_fragment" />
+    <fragment
+        android:id="@+id/contactsNavigation"
+        android:name="es.iessaladillo.pedrojoya.quilloque.fragments.ContactsFragment"
+        android:label="@string/contacts_title"
+        tools:layout="@layout/contacts_fragment" />
 
 </navigation>
