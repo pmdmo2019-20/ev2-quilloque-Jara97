@@ -48,6 +48,10 @@ class MainActivityViewModel : ViewModel() {
         Thread{repository.deleteCall(id)}.start()
     }
 
+    fun searchContact(name:String):LiveData<List<Contact>>{
+        return repository.searchContact(name)
+    }
+
 
 
 

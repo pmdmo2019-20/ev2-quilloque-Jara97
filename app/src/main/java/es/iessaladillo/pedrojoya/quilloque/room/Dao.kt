@@ -42,15 +42,15 @@ interface Dao {
     @Query("select * from contact where contact.name like :name")
     fun searchContact(name:String):LiveData<List<Contact>>
 
-//    @Query("SELECT name AS contactName, num AS phoneNumber " +
-//            "FROM Contact " +
-//            "WHERE phoneNumber like :phoneNumber " +
-//            "UNION " +
-//            "SELECT DISTINCT num AS contactName, num AS phoneNumber " +
-//            "FROM Call " +
-//            "WHERE phoneNumber like :phoneNumber " +
-//            "AND phoneNumber NOT IN (SELECT phoneNumber FROM Contact)")
-//    fun querySuggest(): LiveData<List<Call>>
+    @Query("SELECT name AS contactName, num AS phoneNumber " +
+            "FROM Contact " +
+            "WHERE phoneNumber like :phoneNumber " +
+            "UNION " +
+            "SELECT DISTINCT num AS contactName, num AS phoneNumber " +
+            "FROM Call " +
+            "WHERE phoneNumber like :phoneNumber " +
+            "AND phoneNumber NOT IN (SELECT phoneNumber FROM Contact)")
+    fun querySuggest(phoneNumber:String): LiveData<List<CallWithName2>>
 
 
 

@@ -3,6 +3,7 @@ package es.iessaladillo.pedrojoya.quilloque.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.observe
@@ -63,7 +64,22 @@ class ContactsFragment : Fragment(R.layout.contacts_fragment) {
     }
 
     private fun setListeners() {
+        txtSearch.doAfterTextChanged {
+            if(it.toString().isNotBlank()){
+                viewModel.searchContact("%"+it.toString()+"%").observe(this){
+                    listAdapter.submitList(it)
+                }
+            }
+            else{
+                viewModel.getContacts().observe(this){
+                    listAdapter.submitList(it)
+                    if(it.isNotEmpty()){
+                        emptyView2.visibility= View.INVISIBLE
+                    }
+                }
+            }
 
+        }
     }
 
 

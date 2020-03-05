@@ -13,16 +13,14 @@
         android:layout_marginStart="@dimen/main_margin_1x"
         android:layout_marginTop="@dimen/main_margin_1x"
         android:layout_marginEnd="@dimen/main_margin_1x"
-        android:background="@null"
         android:drawableEnd="@drawable/ic_search_black_24dp"
         android:hint="@string/contacts_txtSearch"
+        android:background="@null"
         android:inputType="textPersonName"
         app:drawableTint="?android:textColorSecondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="Autofill">
-
-        <requestFocus />
     </EditText>
 
     <androidx.recyclerview.widget.RecyclerView
