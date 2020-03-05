@@ -116,7 +116,13 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
 
     private fun writeNumber(num: String) {
         lblNumber.text=lblNumber.text.toString()+num
-        viewModel.getRecent().observe(this){
+        viewModel.querySuggest(num).observe(this){
+            listAdapter.submitList(it)
+            if(it.isNotEmpty()){
+                lblCreateContact2.visibility= View.INVISIBLE
+            }
+        }
+        viewModel.querySuggest("%"+lblNumber.text.toString()+"%").observe(this){
             listAdapter.submitList(it)
             if(it.isNotEmpty()){
                 lblCreateContact2.visibility= View.INVISIBLE
@@ -125,16 +131,21 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
     }
 
     private fun deleteNumber() {
-        if(lblNumber.text.isNotEmpty()){
+        if(lblNumber.text.length==1){
+            lblNumber.text=lblNumber.text.toString().subSequence(0,lblNumber.text.length-1)
+            listAdapter.submitList(emptyList())
+        }
+        else if(lblNumber.text.isNotEmpty()){
             lblNumber.text=lblNumber.text.toString().subSequence(0,lblNumber.text.length-1)
 
-            viewModel.getRecent().observe(this){
+            viewModel.querySuggest("%"+lblNumber.text.toString()+"%").observe(this){
                 listAdapter.submitList(it)
                 if(it.isNotEmpty()){
                     lblCreateContact2.visibility= View.INVISIBLE
                 }
             }
         }
+
         else{
             listAdapter.submitList(emptyList())
         }

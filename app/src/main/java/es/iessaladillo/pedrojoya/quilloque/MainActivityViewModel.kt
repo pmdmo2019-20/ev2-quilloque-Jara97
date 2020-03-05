@@ -52,6 +52,10 @@ class MainActivityViewModel : ViewModel() {
         return repository.searchContact(name)
     }
 
+    fun querySuggest(phoneNumber:String): LiveData<List<CallWithName2>>{
+        return repository.querySuggest(phoneNumber)
+    }
+
 
 
 

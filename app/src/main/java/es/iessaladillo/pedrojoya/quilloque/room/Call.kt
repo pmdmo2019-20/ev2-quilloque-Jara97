@@ -43,7 +43,7 @@ val name:String?
 )
 
 data class CallWithName2(
-    val contactName: String,
+    val contactName: String?,
     val phoneNumber:String
 
 )

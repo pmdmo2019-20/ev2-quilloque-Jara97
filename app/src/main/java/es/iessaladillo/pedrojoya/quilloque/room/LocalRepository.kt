@@ -40,5 +40,9 @@ class LocalRepository(private val dao: Dao){
         return dao.searchContact(name)
     }
 
+    fun querySuggest(phoneNumber:String): LiveData<List<CallWithName2>>{
+        return dao.querySuggest(phoneNumber)
+    }
+
 
 }

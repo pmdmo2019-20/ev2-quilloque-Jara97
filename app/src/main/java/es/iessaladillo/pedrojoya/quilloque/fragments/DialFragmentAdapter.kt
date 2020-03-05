@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import es.iessaladillo.pedrojoya.quilloque.R
 import es.iessaladillo.pedrojoya.quilloque.room.CallWithName
+import es.iessaladillo.pedrojoya.quilloque.room.CallWithName2
 import es.iessaladillo.pedrojoya.quilloque.room.ContactWithNumber
 import es.iessaladillo.pedrojoya.quilloque.utils.createAvatarDrawable
 import kotlinx.android.extensions.LayoutContainer
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.dial_fragment_item.view.*
 
 class DialFragmentAdapter : RecyclerView.Adapter<DialFragmentAdapter.ViewHolder>() {
 
-    private var data: List<ContactWithNumber> = emptyList()
+    private var data: List<CallWithName2> = emptyList()
     private var onItemClick:((String)->Unit)?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DialFragmentAdapter.ViewHolder {
@@ -31,7 +32,7 @@ class DialFragmentAdapter : RecyclerView.Adapter<DialFragmentAdapter.ViewHolder>
         return data.size
     }
 
-    fun submitList(list:List<ContactWithNumber>) {
+    fun submitList(list:List<CallWithName2>) {
         data=list
         notifyDataSetChanged()
     }
@@ -42,7 +43,7 @@ class DialFragmentAdapter : RecyclerView.Adapter<DialFragmentAdapter.ViewHolder>
     }
 
 
-    fun getItem(position:Int): ContactWithNumber {
+    fun getItem(position:Int): CallWithName2 {
         return data[position]
     }
 
@@ -57,12 +58,12 @@ class DialFragmentAdapter : RecyclerView.Adapter<DialFragmentAdapter.ViewHolder>
 
         }
 
-        fun bind(contact: ContactWithNumber) {
-            containerView.imgAvatar.setImageDrawable(createAvatarDrawable(contact.contactName?:contact.num))
-            containerView.lblContactName.setText(contact.contactName?:contact.num)
-            containerView.lblPhoneNumber.setText(if(contact.contactName==null)"" else contact.num)
+        fun bind(contact: CallWithName2) {
+            containerView.imgAvatar.setImageDrawable(createAvatarDrawable(contact.contactName?:contact.phoneNumber))
+            containerView.lblContactName.setText(contact.contactName?:contact.phoneNumber)
+            containerView.lblPhoneNumber.setText(if(contact.contactName==null)"" else contact.phoneNumber)
             containerView.setOnClickListener {
-                onItemClick?.invoke(contact.num)
+                onItemClick?.invoke(contact.phoneNumber)
             }
         }
     }
