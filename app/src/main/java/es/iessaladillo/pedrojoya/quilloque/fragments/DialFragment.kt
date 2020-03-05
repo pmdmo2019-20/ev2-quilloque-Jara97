@@ -40,9 +40,13 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
         setObservers()
         setListeners()
         setupRecyclerView()
+        if(savedInstanceState!=null){
+            lblNumber.setText(viewModel.getNum())
+        }
         if(lblNumber.text.toString().isEmpty()){
             lblCreateContact2.visibility= View.INVISIBLE
         }
+
     }
 
     private fun setListeners() {
@@ -93,7 +97,9 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
         }
         imgBackspace.setOnLongClickListener {
             lblNumber.text=""
+            viewModel.setNum(lblNumber.text.toString())
             listAdapter.submitList(emptyList())
+            lblCreateContact2.visibility= View.INVISIBLE
             true
         }
         lblCreateContact2.setOnClickListener {
@@ -135,6 +141,7 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
 
     private fun writeNumber(num: String) {
         lblNumber.text=lblNumber.text.toString()+num
+        viewModel.setNum(lblNumber.text.toString())
         viewModel.querySuggest(num).observe(this){
             listAdapter.submitList(it)
             if(it.isNotEmpty()){
@@ -156,6 +163,7 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
         if(lblNumber.text.length==1){
             lblNumber.text=lblNumber.text.toString().subSequence(0,lblNumber.text.length-1)
             listAdapter.submitList(emptyList())
+            lblCreateContact2.visibility= View.INVISIBLE
         }
         else if(lblNumber.text.isNotEmpty()){
             lblNumber.text=lblNumber.text.toString().subSequence(0,lblNumber.text.length-1)
@@ -171,6 +179,7 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
         else{
             listAdapter.submitList(emptyList())
         }
+        viewModel.setNum(lblNumber.text.toString())
 
     }
 

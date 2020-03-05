@@ -12,6 +12,8 @@ class MainActivityViewModel : ViewModel() {
 
     private lateinit var  repository: LocalRepository
 
+    private var num=""
+
     private val _imageCreation: MutableLiveData<Int> =  MutableLiveData()
     val imageCreation: LiveData<Int>
         get() = _imageCreation
@@ -54,6 +56,14 @@ class MainActivityViewModel : ViewModel() {
 
     fun querySuggest(phoneNumber:String): LiveData<List<CallWithName2>>{
         return repository.querySuggest(phoneNumber)
+    }
+
+    fun getNum():String{
+        return num
+    }
+
+    fun setNum(num:String){
+        this.num=num
     }
 
 
