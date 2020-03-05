@@ -1,7 +1,10 @@
 package es.iessaladillo.pedrojoya.quilloque.fragments
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -11,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import es.iessaladillo.pedrojoya.quilloque.MainActivityViewModel
 import es.iessaladillo.pedrojoya.quilloque.R
 import es.iessaladillo.pedrojoya.quilloque.room.Call
+import es.iessaladillo.pedrojoya.quilloque.room.Contact
 import kotlinx.android.synthetic.main.contacts_fragment.*
 import kotlinx.android.synthetic.main.dial_fragment.*
 import kotlinx.android.synthetic.main.recent_fragment.*
@@ -92,6 +96,21 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
             listAdapter.submitList(emptyList())
             true
         }
+        lblCreateContact2.setOnClickListener {
+            AlertDialog.Builder(context!!).apply {
+                val edittext = EditText(context!!)
+                setMessage(R.string.contact_creation_lblName)
+                setTitle(R.string.contact_creation_title)
+                setView(edittext)
+                setPositiveButton("Create", DialogInterface.OnClickListener { dialog, whichButton ->
+                    if(edittext.text.isNotBlank()){
+                        viewModel.insetContact(Contact(0,edittext.text.toString(),lblNumber.text.toString()))
+                    }
+                }).show()
+            }
+
+        }
+
 
 
     }
@@ -120,6 +139,9 @@ class DialFragment : Fragment(R.layout.dial_fragment) {
             listAdapter.submitList(it)
             if(it.isNotEmpty()){
                 lblCreateContact2.visibility= View.INVISIBLE
+            }
+            else{
+                lblCreateContact2.visibility= View.VISIBLE
             }
         }
         viewModel.querySuggest("%"+lblNumber.text.toString()+"%").observe(this){

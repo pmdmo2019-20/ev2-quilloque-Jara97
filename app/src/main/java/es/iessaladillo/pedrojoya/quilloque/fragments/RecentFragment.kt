@@ -27,11 +27,11 @@ class RecentFragment : Fragment(es.iessaladillo.pedrojoya.quilloque.R.layout.rec
     private val listAdapter: RecentFragmentAdapter = RecentFragmentAdapter().apply {
         this.setOnItemClick { call ->
             val alert = AlertDialog.Builder(context!!).apply {
-                val edittext = EditText(context!!)
-                setMessage(es.iessaladillo.pedrojoya.quilloque.R.string.contact_creation_lblName)
-                setTitle(es.iessaladillo.pedrojoya.quilloque.R.string.contact_creation_title)
-                setView(edittext)
-                setPositiveButton("Create", DialogInterface.OnClickListener { dialog, whichButton ->
+                    val edittext = EditText(context!!)
+                    setMessage(es.iessaladillo.pedrojoya.quilloque.R.string.contact_creation_lblName)
+                    setTitle(es.iessaladillo.pedrojoya.quilloque.R.string.contact_creation_title)
+                    setView(edittext)
+                    setPositiveButton("Create", DialogInterface.OnClickListener { dialog, whichButton ->
                     if(edittext.text.isNotBlank()){
                         viewModel.insetContact(Contact(0,edittext.text.toString(),call.num))
                     }
